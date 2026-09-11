@@ -11,12 +11,12 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
 
   if (predictions.predictions.length === 0) {
     return (
-      <div className="bg-white border border-slate-200 rounded-lg p-6 text-center space-y-2">
-        <h3 className="text-sm font-semibold text-slate-900">
+      <div className="surface-primary p-8 text-center space-y-4">
+        <h3 className="section-title text-stone-900">
           No Historical Matches Found
         </h3>
-        <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-          Rank {formatRank(userRank)} exceeded historical closing rank windows for {examCode} ({category}) in this dataset. You may wish to evaluate different entrance examinations or state-level quota opportunities.
+        <p className="body-text text-stone-600 max-w-lg mx-auto">
+          Rank {formatRank(userRank)} exceeded historical closing rank windows for {examCode} ({category}) in this dataset. Consider exploring different entrance examinations or state-level quota opportunities.
         </p>
       </div>
     );
@@ -27,38 +27,49 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
   const reachMatches = predictions.predictions.filter((p) => p.matchTier === "REACH");
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold text-slate-900">
-            Historical Cutoff Matches for Rank {formatRank(userRank)} ({examCode} • {category})
-          </p>
-          <p className="text-[11px] text-slate-500 mt-0.5">
-            Classified by distance between your rank and published historical closing ranks.
+    <div className="space-y-8">
+      <div className="surface-primary p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div className="space-y-2">
+          <h3 className="section-title">
+            Historical Cutoff Analysis
+          </h3>
+          <p className="body-text text-stone-600">
+            Rank {formatRank(userRank)} ({examCode} • {category}) classified by distance to historical closing ranks
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-medium font-mono text-slate-600">
-          <span className="text-emerald-700 font-semibold">{summary.strongCount} Strong</span>
-          <span>•</span>
-          <span className="text-slate-800 font-semibold">{summary.possibleCount} Possible</span>
-          <span>•</span>
-          <span className="text-slate-600 font-semibold">{summary.reachCount} Reach</span>
+        <div className="flex items-center gap-4 text-stone-700">
+          <div className="text-center">
+            <div className="body-text font-semibold text-emerald-700">{summary.strongCount}</div>
+            <div className="small-text text-stone-600">Strong</div>
+          </div>
+          <div className="w-px h-8 bg-stone-300"></div>
+          <div className="text-center">
+            <div className="body-text font-semibold text-stone-900">{summary.possibleCount}</div>
+            <div className="small-text text-stone-600">Possible</div>
+          </div>
+          <div className="w-px h-8 bg-stone-300"></div>
+          <div className="text-center">
+            <div className="body-text font-semibold text-stone-600">{summary.reachCount}</div>
+            <div className="small-text text-stone-600">Reach</div>
+          </div>
         </div>
       </div>
 
       {strongMatches.length > 0 && (
-        <section className="space-y-3">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-800">
-              Strong Matches ({strongMatches.length})
-            </h3>
-            <span className="text-[11px] text-slate-500 font-normal">
-              — Your rank is comfortably within historical closing cutoffs
-            </span>
-          </div>
+        <section className="space-y-4">
+          <header className="pb-3 border-b border-stone-200">
+            <div className="flex items-center gap-3">
+              <h3 className="section-title text-emerald-800">
+                Strong Matches ({strongMatches.length})
+              </h3>
+              <span className="small-text text-stone-600">
+                Your rank is comfortably within historical closing cutoffs
+              </span>
+            </div>
+          </header>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {strongMatches.map((result) => (
               <PredictionResultItem key={`${result.college.id}-${result.course.name}`} result={result} />
             ))}
@@ -67,17 +78,19 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
       )}
 
       {possibleMatches.length > 0 && (
-        <section className="space-y-3">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
-              Possible Matches ({possibleMatches.length})
-            </h3>
-            <span className="text-[11px] text-slate-500 font-normal">
-              — Your rank falls near historical closing ranges (competitive)
-            </span>
-          </div>
+        <section className="space-y-4">
+          <header className="pb-3 border-b border-stone-200">
+            <div className="flex items-center gap-3">
+              <h3 className="section-title text-stone-800">
+                Possible Matches ({possibleMatches.length})
+              </h3>
+              <span className="small-text text-stone-600">
+                Your rank falls near historical closing ranges (competitive)
+              </span>
+            </div>
+          </header>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {possibleMatches.map((result) => (
               <PredictionResultItem key={`${result.college.id}-${result.course.name}`} result={result} />
             ))}
@@ -86,17 +99,19 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
       )}
 
       {reachMatches.length > 0 && (
-        <section className="space-y-3">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-              Reach Options ({reachMatches.length})
-            </h3>
-            <span className="text-[11px] text-slate-500 font-normal">
-              — Historical cutoffs were slightly above your rank; requires round shifts
-            </span>
-          </div>
+        <section className="space-y-4">
+          <header className="pb-3 border-b border-stone-200">
+            <div className="flex items-center gap-3">
+              <h3 className="section-title text-stone-700">
+                Reach Options ({reachMatches.length})
+              </h3>
+              <span className="small-text text-stone-600">
+                Historical cutoffs were above your rank; requires favorable conditions
+              </span>
+            </div>
+          </header>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {reachMatches.map((result) => (
               <PredictionResultItem key={`${result.college.id}-${result.course.name}`} result={result} />
             ))}
@@ -104,12 +119,12 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
         </section>
       )}
 
-      <div className="p-4 border border-slate-200 bg-slate-50 rounded-lg text-[11px] text-slate-500 space-y-1">
-        <p className="font-semibold text-slate-700">Evaluation Methodology & Counseling Disclaimer</p>
-        <p>
-          Calculations compare the submitted rank against documented closing cutoffs in our historical dataset. Cutoff trends fluctuate each academic cycle based on candidate pool density, exam normalization, and reservation policies. This tool provides an informational guide and does not constitute guaranteed admission or seat allocation.
+      <footer className="p-6 border border-stone-200 bg-stone-50 rounded-lg">
+        <h4 className="body-text font-medium text-stone-900 mb-2">Methodology & Disclaimer</h4>
+        <p className="small-text text-stone-700 leading-relaxed">
+          Calculations compare submitted ranks against documented closing cutoffs in our historical dataset. Cutoff trends fluctuate each academic cycle based on candidate pool density, exam normalization, and reservation policies. This analysis provides informational guidance and does not constitute guaranteed admission or seat allocation.
         </p>
-      </div>
+      </footer>
     </div>
   );
 }
@@ -117,70 +132,80 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
 function PredictionResultItem({ result }: { result: PredictionResult }) {
   const tierBadge: Record<MatchTier, { label: string; className: string }> = {
     STRONG: { label: "Strong Match", className: "bg-emerald-50 text-emerald-800 border-emerald-200" },
-    POSSIBLE: { label: "Possible Match", className: "bg-slate-100 text-slate-800 border-slate-300" },
-    REACH: { label: "Reach Option", className: "bg-slate-50 text-slate-600 border-slate-200" },
+    POSSIBLE: { label: "Possible Match", className: "bg-stone-100 text-stone-800 border-stone-300" },
+    REACH: { label: "Reach Option", className: "bg-stone-50 text-stone-600 border-stone-200" },
   };
 
   const badge = tierBadge[result.matchTier];
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4 space-y-3 hover:border-slate-300 transition-colors">
-      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className={`text-[10px] uppercase font-mono font-semibold px-2 py-0.5 rounded border ${badge.className}`}>
+    <div className="surface-primary border border-stone-200 p-6 space-y-4 hover:border-stone-300 transition-colors">
+      <header className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <span className={`small-text font-medium px-3 py-1 rounded border ${badge.className}`}>
               {badge.label}
             </span>
-            <span className="text-xs text-slate-400">•</span>
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="small-text text-stone-500">
               {result.college.location}
             </span>
           </div>
-          <h4 className="text-sm font-bold text-slate-900 mt-1">
-            <Link href={`/colleges/${result.college.id}`} className="hover:underline">
-              {result.college.name}
-            </Link>
-          </h4>
-          <p className="text-xs font-semibold text-slate-700 mt-0.5">
-            {result.course.name}
-          </p>
+          
+          <div>
+            <h4 className="section-title mb-1">
+              <Link href={`/colleges/${result.college.id}`} className="hover:text-stone-700 transition-colors">
+                {result.college.name}
+              </Link>
+            </h4>
+            <p className="body-text font-medium text-stone-700">
+              {result.course.name}
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 text-xs self-start sm:self-auto">
-          <span className="font-mono text-slate-700 font-medium">★ {result.college.rating.toFixed(1)}</span>
+        <div className="flex items-center gap-4 self-start lg:self-auto">
+          <div className="text-center">
+            <div className="small-text text-stone-600">Rating</div>
+            <div className="body-text font-medium text-stone-900">★ {result.college.rating.toFixed(1)}</div>
+          </div>
           <Link
             href={`/colleges/${result.college.id}`}
-            className="text-xs font-medium text-slate-900 hover:text-slate-700 underline underline-offset-2"
+            className="btn btn-ghost inline-flex items-center gap-2"
           >
-            View profile →
+            View profile
+            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
+            </svg>
           </Link>
         </div>
-      </div>
+      </header>
 
-      <div className="pt-2 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+      <div className="pt-4 border-t border-stone-200 grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-          <span className="text-slate-400 block text-[11px]">Opening Rank</span>
-          <span className="font-mono font-medium text-slate-800">{formatRank(result.cutoff.openingRank)}</span>
+          <div className="small-text text-stone-500 mb-1">Opening Rank</div>
+          <div className="body-text font-mono font-medium text-stone-800">{formatRank(result.cutoff.openingRank)}</div>
         </div>
         <div>
-          <span className="text-slate-400 block text-[11px]">Closing Rank</span>
-          <span className="font-mono font-semibold text-slate-900">{formatRank(result.cutoff.closingRank)}</span>
+          <div className="small-text text-stone-500 mb-1">Closing Rank</div>
+          <div className="body-text font-mono font-semibold text-stone-900">{formatRank(result.cutoff.closingRank)}</div>
         </div>
         <div>
-          <span className="text-slate-400 block text-[11px]">Annual Tuition</span>
-          <span className="font-mono font-medium text-slate-800">{formatCurrency(result.course.fees || result.college.totalFees)}</span>
+          <div className="small-text text-stone-500 mb-1">Annual Tuition</div>
+          <div className="body-text font-mono font-medium text-stone-800">{formatCurrency(result.course.fees || result.college.totalFees)}</div>
         </div>
         <div>
-          <span className="text-slate-400 block text-[11px]">Rank Margin</span>
-          <span className={`font-mono font-semibold ${result.rankDifference >= 0 ? "text-emerald-700" : "text-rose-700"}`}>
+          <div className="small-text text-stone-500 mb-1">Rank Margin</div>
+          <div className={`body-text font-mono font-semibold ${result.rankDifference >= 0 ? "text-emerald-700" : "text-red-700"}`}>
             {result.rankDifference >= 0 ? `+${formatRank(result.rankDifference)}` : `-${formatRank(Math.abs(result.rankDifference))}`}
-          </span>
+          </div>
         </div>
       </div>
 
-      <div className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded border border-slate-100 leading-relaxed font-sans">
-        <span className="font-semibold text-slate-700">Rationale: </span>
-        {result.reason}
+      <div className="p-4 surface-secondary border border-stone-200 rounded-lg">
+        <p className="small-text text-stone-700 leading-relaxed">
+          <span className="font-medium">Analysis: </span>
+          {result.reason}
+        </p>
       </div>
     </div>
   );

@@ -95,27 +95,27 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-5 space-y-4">
-      <div className="pb-3 border-b border-slate-100">
-        <h2 className="text-sm font-semibold text-slate-900">
+    <div className="surface-primary p-6 space-y-6">
+      <header className="pb-4 border-b border-stone-200">
+        <h2 className="section-title mb-2">
           Rank Parameters
         </h2>
-        <p className="text-xs text-slate-500">
+        <p className="body-text text-stone-600">
           Provide your entrance exam, verified rank, and seat category to calculate historical cutoff fit.
         </p>
-      </div>
+      </header>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">
-              Entrance Exam <span className="text-slate-400">*</span>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="space-y-2">
+            <label className="block body-text font-medium text-stone-900">
+              Entrance Exam <span className="text-red-500">*</span>
             </label>
             <Select
               value={examCode}
               onChange={(e) => setExamCode(e.target.value)}
               required
-              className="text-xs h-9"
+              className="w-full"
             >
               {exams.map((exam) => (
                 <option key={exam.code} value={exam.code}>
@@ -125,9 +125,9 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
             </Select>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">
-              All-India Rank <span className="text-slate-400">*</span>
+          <div className="space-y-2">
+            <label className="block body-text font-medium text-stone-900">
+              All-India Rank <span className="text-red-500">*</span>
             </label>
             <Input
               type="number"
@@ -137,18 +137,18 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
               min="1"
               max="2000000"
               required
-              className="text-xs h-9 font-mono"
+              className="w-full font-mono"
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">
+          <div className="space-y-2">
+            <label className="block body-text font-medium text-stone-900">
               Counseling Category
             </label>
             <Select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="text-xs h-9"
+              className="w-full"
             >
               <option value="GENERAL">General / Open</option>
               <option value="OBC">OBC-NCL</option>
@@ -160,12 +160,12 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
         </div>
 
         {error && (
-          <div className="p-3 bg-rose-50 border border-rose-200 rounded text-xs text-rose-800">
-            {error}
+          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="body-text text-red-800">{error}</p>
           </div>
         )}
 
-        <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
+        <div className="flex items-center gap-4 pt-4 border-t border-stone-200">
           <Button type="submit" variant="primary" size="md">
             Evaluate Rank Fit
           </Button>

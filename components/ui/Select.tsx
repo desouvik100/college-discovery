@@ -4,12 +4,10 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {}
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ className = "", children, ...props }, ref) => {
+    const classes = `select ${className}`.trim();
+
     return (
-      <select
-        ref={ref}
-        className={`input ${className}`}
-        {...props}
-      >
+      <select ref={ref} className={classes} {...props}>
         {children}
       </select>
     );

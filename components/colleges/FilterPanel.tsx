@@ -31,7 +31,7 @@ const STATES = [
 ];
 
 const COLLEGE_TYPES = [
-  { value: "", label: "All Affiliations" },
+  { value: "", label: "All Types" },
   { value: "GOVERNMENT", label: "Government / Public" },
   { value: "PRIVATE", label: "Private" },
   { value: "DEEMED", label: "Deemed University" },
@@ -71,14 +71,14 @@ export default function FilterPanel() {
   ].filter(Boolean);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4 space-y-4">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+    <div className="surface p-6 space-y-5">
+      <div className="flex items-center justify-between pb-4 border-b border-stone-200">
         <div className="flex items-center gap-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
+          <h2 className="label-text">
             Filters
           </h2>
           {activeFilters.length > 0 && (
-            <span className="text-[11px] font-mono bg-slate-100 text-slate-700 px-1.5 py-0.2 rounded">
+            <span className="badge badge-neutral">
               {activeFilters.length}
             </span>
           )}
@@ -87,22 +87,21 @@ export default function FilterPanel() {
           <button
             type="button"
             onClick={handleClearFilters}
-            className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-2"
+            className="body-small text-stone-500 hover:text-stone-900 underline underline-offset-2 transition-colors"
           >
             Reset
           </button>
         )}
       </div>
 
-      <div className="space-y-3.5">
+      <div className="space-y-4">
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="field-label">
             State / Territory
           </label>
           <Select
             value={searchParams.get("state") || ""}
             onChange={(e) => handleFilterChange("state", e.target.value)}
-            className="text-xs h-8"
           >
             {STATES.map((st) => (
               <option key={st} value={st === "All States" ? "" : st}>
@@ -113,13 +112,12 @@ export default function FilterPanel() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
-            Affiliation / Type
+          <label className="field-label">
+            College Type
           </label>
           <Select
             value={searchParams.get("collegeType") || ""}
             onChange={(e) => handleFilterChange("collegeType", e.target.value)}
-            className="text-xs h-8"
           >
             {COLLEGE_TYPES.map((t) => (
               <option key={t.value} value={t.value}>
@@ -130,30 +128,28 @@ export default function FilterPanel() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="field-label">
             Minimum Rating
           </label>
           <Select
             value={searchParams.get("minRating") || ""}
             onChange={(e) => handleFilterChange("minRating", e.target.value)}
-            className="text-xs h-8"
           >
             <option value="">Any Rating</option>
-            <option value="4.7">4.7+ (Premier tier)</option>
-            <option value="4.4">4.4+ (High tier)</option>
-            <option value="4.0">4.0+ (Established)</option>
-            <option value="3.5">3.5+ (Standard)</option>
+            <option value="4.7">4.7+ (Premier)</option>
+            <option value="4.4">4.4+ (Excellent)</option>
+            <option value="4.0">4.0+ (Very Good)</option>
+            <option value="3.5">3.5+ (Good)</option>
           </Select>
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
-            Max Annual Tuition (₹)
+          <label className="field-label">
+            Maximum Annual Fees
           </label>
           <Select
             value={searchParams.get("maxFees") || ""}
             onChange={(e) => handleFilterChange("maxFees", e.target.value)}
-            className="text-xs h-8"
           >
             <option value="">No Maximum</option>
             <option value="100000">Under ₹1,00,000</option>

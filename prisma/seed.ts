@@ -20,7 +20,6 @@ interface CollegeSeed {
 }
 
 const COLLEGES_DATA: CollegeSeed[] = [
-  // --- PREMIER IITs (JEE_ADVANCED) ---
   {
     name: "Indian Institute of Technology Bombay",
     state: "Maharashtra",

@@ -83,13 +83,13 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-5 space-y-4" ref={containerRef}>
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
-        <div>
-          <h2 className="text-sm font-semibold text-slate-900">
+    <div className="surface-primary p-6 space-y-6" ref={containerRef}>
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 pb-6 border-b border-stone-200">
+        <div className="space-y-2">
+          <h2 className="section-title">
             Selected Institutions ({selectedIds.length}/3)
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="body-text text-stone-600">
             Add up to 3 colleges to compare tuition, placement benchmarks, and rankings.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
           <button
             type="button"
             onClick={() => router.push("/compare")}
-            className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-2 self-start sm:self-auto"
+            className="btn btn-ghost self-start lg:self-auto"
           >
             Clear selection
           </button>
@@ -106,24 +106,28 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
       </div>
 
       {selectedIds.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-3">
           {selectedIds.map((id, index) => {
             const college = colleges.find((c) => c.id === id);
             return (
-              <span
+              <div
                 key={id}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 border border-slate-200 text-slate-800 rounded text-xs font-medium"
+                className="inline-flex items-center gap-3 px-4 py-3 surface-secondary rounded-lg border border-stone-200"
               >
-                <span>{college ? college.name : `Institution ${index + 1}`}</span>
+                <span className="body-text font-medium text-stone-900">
+                  {college ? college.name : `Institution ${index + 1}`}
+                </span>
                 <button
                   type="button"
                   onClick={() => handleRemove(id)}
-                  className="text-slate-400 hover:text-slate-700 font-bold ml-1"
+                  className="text-stone-500 hover:text-red-600 transition-colors"
                   title="Remove from comparison"
                 >
-                  ×
+                  <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                  </svg>
                 </button>
-              </span>
+              </div>
             );
           })}
         </div>
@@ -137,16 +141,16 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
             onChange={(e) => setSearch(e.target.value)}
             onFocus={() => search.length >= 2 && setIsOpen(true)}
             placeholder="Type college or city name to add (e.g., IIT Delhi, BITS, Bangalore)..."
-            className="w-full h-9 px-3 rounded-md border border-slate-300 bg-white text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
+            className="input w-full"
           />
 
           {isOpen && (
-            <div className="absolute z-20 mt-1 w-full bg-white border border-slate-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+            <div className="absolute z-20 mt-2 w-full surface-primary border border-stone-200 rounded-lg shadow-lg max-h-64 overflow-y-auto">
               {loading && (
-                <div className="p-3 text-xs text-slate-500 text-center">Searching institutions...</div>
+                <div className="p-4 body-text text-stone-600 text-center">Searching institutions...</div>
               )}
               {!loading && results.length === 0 && (
-                <div className="p-3 text-xs text-slate-500 text-center">No matching institutions found</div>
+                <div className="p-4 body-text text-stone-600 text-center">No matching institutions found</div>
               )}
               {!loading &&
                 results.map((c) => {
@@ -157,20 +161,20 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
                       type="button"
                       disabled={alreadySelected}
                       onClick={() => handleSelect(c.id)}
-                      className={`w-full text-left px-3 py-2.5 text-xs border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors flex items-center justify-between ${
-                        alreadySelected ? "opacity-50 bg-slate-50 cursor-not-allowed" : ""
+                      className={`w-full text-left px-4 py-4 border-b border-stone-100 last:border-0 hover:bg-stone-50 transition-colors flex items-center justify-between ${
+                        alreadySelected ? "opacity-50 bg-stone-50 cursor-not-allowed" : ""
                       }`}
                     >
-                      <div>
-                        <p className="font-semibold text-slate-900">{c.name}</p>
-                        <p className="text-[11px] text-slate-500">{c.location} • {c.collegeType}</p>
+                      <div className="space-y-1">
+                        <p className="body-text font-medium text-stone-900">{c.name}</p>
+                        <p className="small-text text-stone-600">{c.location} • {c.collegeType}</p>
                       </div>
-                      <div className="text-right flex-shrink-0 ml-3">
-                        <span className="font-medium text-slate-700">★ {Number(c.rating).toFixed(1)}</span>
+                      <div className="text-right flex-shrink-0 ml-4 space-y-1">
+                        <div className="body-text font-medium text-stone-700">★ {Number(c.rating).toFixed(1)}</div>
                         {alreadySelected ? (
-                          <span className="block text-[10px] text-slate-400">Selected</span>
+                          <div className="small-text text-stone-500">Selected</div>
                         ) : (
-                          <span className="block text-[10px] text-slate-900 font-medium">+ Add</span>
+                          <div className="small-text text-stone-900 font-medium">Add</div>
                         )}
                       </div>
                     </button>
@@ -180,9 +184,11 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
           )}
         </div>
       ) : (
-        <p className="text-xs text-slate-500 italic">
-          Maximum of 3 institutions selected for side-by-side comparison. Remove one to replace it.
-        </p>
+        <div className="p-4 surface-secondary rounded-lg">
+          <p className="body-text text-stone-600">
+            Maximum of 3 institutions selected for side-by-side comparison. Remove one to replace it.
+          </p>
+        </div>
       )}
     </div>
   );

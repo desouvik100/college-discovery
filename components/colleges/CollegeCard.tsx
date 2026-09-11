@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CollegeListItem } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import CollegeImage from "@/components/ui/CollegeImage";
+import SaveCollegeButton from "@/components/colleges/SaveCollegeButton";
 
 const TYPE_LABELS: Record<string, string> = {
   GOVERNMENT: "Government",
@@ -75,7 +76,8 @@ export default function CollegeCard({ college }: CollegeCardProps) {
           {college.coursesCount ? `${college.coursesCount} Programs` : "Undergraduate"}
         </span>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <SaveCollegeButton collegeId={college.id} collegeName={college.name} />
           <Link
             href={`/compare?ids=${college.id}`}
             className="text-slate-500 hover:text-slate-800 hover:bg-slate-100 px-2 py-1 rounded transition-colors text-[11px] font-medium"

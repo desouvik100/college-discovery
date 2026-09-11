@@ -16,30 +16,43 @@ export default function ExplorePage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-      <div className="space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+    <div className="bg-stone-50 min-h-screen">
+      {/* Page Header */}
+      <div className="bg-white border-b border-stone-200">
+        <div className="container-wide py-8">
+          <h1 className="page-title mb-2">
             Explore Colleges
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Search institutions across India. Filter by state, type, tuition range, and verify placement statistics.
+          <p className="body-text text-stone-600 max-w-3xl">
+            Search and filter accredited institutions across India. Compare fees, placements, ratings, and admission requirements.
           </p>
         </div>
-
-        <SearchBar />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-        <aside className="lg:col-span-1">
-          <FilterPanel />
-        </aside>
+      {/* Search Section */}
+      <div className="bg-white border-b border-stone-200">
+        <div className="container-wide py-6">
+          <SearchBar />
+        </div>
+      </div>
 
-        <main className="lg:col-span-3">
-          <Suspense fallback={<LoadingSkeleton />}>
-            <CollegeGrid searchParams={searchParams} />
-          </Suspense>
-        </main>
+      {/* Main Content Layout */}
+      <div className="container-wide py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Filter Sidebar */}
+          <aside className="lg:col-span-1">
+            <div className="sticky top-6">
+              <FilterPanel />
+            </div>
+          </aside>
+
+          {/* College Results */}
+          <main className="lg:col-span-3">
+            <Suspense fallback={<LoadingSkeleton />}>
+              <CollegeGrid searchParams={searchParams} />
+            </Suspense>
+          </main>
+        </div>
       </div>
     </div>
   );

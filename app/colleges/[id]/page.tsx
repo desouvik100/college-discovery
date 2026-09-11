@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCollegeById } from "@/services/collegeService";
 import { formatCurrency, formatRank } from "@/lib/utils";
+import SaveCollegeButton from "@/components/colleges/SaveCollegeButton";
 
 export default async function CollegeDetailPage({
   params,
@@ -69,12 +70,19 @@ export default async function CollegeDetailPage({
               <span>{Number(college.rating).toFixed(1)}</span>
               <span className="text-xs text-slate-400 font-normal">/ 5.0</span>
             </div>
-            <Link
-              href={`/compare?ids=${college.id}`}
-              className="inline-flex items-center justify-center text-xs font-medium text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 px-3 py-1.5 rounded transition-colors"
-            >
-              Add to Compare +
-            </Link>
+            <div className="flex items-center gap-2">
+              <SaveCollegeButton
+                collegeId={college.id}
+                collegeName={college.name}
+                variant="detail"
+              />
+              <Link
+                href={`/compare?ids=${college.id}`}
+                className="inline-flex items-center justify-center text-xs font-medium text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 px-3 py-1.5 rounded transition-colors"
+              >
+                Add to Compare +
+              </Link>
+            </div>
           </div>
         </div>
 

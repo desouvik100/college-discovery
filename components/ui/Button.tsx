@@ -1,18 +1,18 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "destructive";
+  variant?: "primary" | "secondary" | "ghost" | "link";
   size?: "sm" | "md" | "lg";
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className = "", variant = "primary", size = "md", type = "button", ...props }, ref) => {
+  ({ className = "", variant = "primary", size = "md", type = "button", children, ...props }, ref) => {
     const baseClasses = "btn";
     const variantClasses = {
       primary: "btn-primary",
       secondary: "btn-secondary",
       ghost: "btn-ghost",
-      destructive: "btn-destructive",
+      link: "btn-link",
     };
     const sizeClasses = {
       sm: "btn-sm",
@@ -22,7 +22,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
-    return <button ref={ref} type={type} className={classes} {...props} />;
+    return (
+      <button ref={ref} type={type} className={classes} {...props}>
+        {children}
+      </button>
+    );
   }
 );
 

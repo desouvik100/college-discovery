@@ -38,10 +38,10 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="relative w-full">
+    <form onSubmit={handleSearch} className="relative max-w-2xl">
       <div className="relative flex items-center">
         <svg
-          className="absolute left-3 w-4 h-4 text-slate-400 pointer-events-none"
+          className="absolute left-3 w-4 h-4 text-stone-400 pointer-events-none"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -49,7 +49,7 @@ export default function SearchBar() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={1.5}
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
@@ -57,15 +57,15 @@ export default function SearchBar() {
           type="search"
           value={term}
           onChange={(e) => setTerm(e.target.value)}
-          placeholder="Search by college name, city, or state (e.g., IIT, Delhi, Bangalore)..."
-          className="w-full h-10 pl-9 pr-24 rounded-md border border-slate-300 bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-slate-900 shadow-sm"
+          placeholder="Search by college name, city, or state..."
+          className="w-full h-11 pl-9 pr-24 border border-stone-300 bg-white text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-400 focus:ring-1 focus:ring-stone-400 transition-all duration-200 rounded-md"
         />
         <div className="absolute right-1.5 flex items-center space-x-1">
           {term && (
             <button
               type="button"
               onClick={handleClear}
-              className="text-xs text-slate-400 hover:text-slate-600 px-1.5 py-1 rounded"
+              className="text-xs text-stone-400 hover:text-stone-600 px-2 py-1 rounded transition-colors"
               title="Clear search"
             >
               Clear
@@ -73,7 +73,7 @@ export default function SearchBar() {
           )}
           <button
             type="submit"
-            className="h-7 px-3 bg-slate-900 text-white rounded text-xs font-medium hover:bg-slate-800 transition-colors"
+            className="h-8 px-3 bg-stone-900 text-white rounded text-xs font-medium hover:bg-stone-800 transition-colors"
           >
             Search
           </button>

@@ -89,3 +89,39 @@ export type PredictionResponse = {
     totalMatches: number;
   };
 };
+
+export type UserPublicProfile = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+};
+
+export type SavedCollegeItem = {
+  id: string;
+  collegeId: string;
+  savedAt: string;
+  college: CollegeListItem;
+};
+
+export type SavedComparisonItem = {
+  id: string;
+  title?: string | null;
+  savedAt: string;
+  colleges: {
+    id: string;
+    collegeId: string;
+    order: number;
+    college: {
+      id: string;
+      name: string;
+      city: string;
+      state: string;
+      rating: number;
+      totalFees: number;
+      imageUrl?: string | null;
+      collegeType: string;
+    };
+  }[];
+};
+
