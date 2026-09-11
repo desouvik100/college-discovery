@@ -66,7 +66,6 @@ export default function ComparePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
           Compare Institutions
@@ -76,10 +75,8 @@ export default function ComparePage() {
         </p>
       </div>
 
-      {/* College Selector */}
       <CollegeSelector selectedIds={selectedIds} colleges={colleges} />
 
-      {/* States Handling */}
       {loading && (
         <div className="py-12 text-center text-xs text-slate-500">
           Loading comparison data...
@@ -92,7 +89,6 @@ export default function ComparePage() {
         </div>
       )}
 
-      {/* 0 Selected State */}
       {!loading && !error && selectedIds.length === 0 && (
         <div className="text-center py-6 px-4 border border-dashed border-slate-200 rounded-lg bg-white space-y-2">
           <p className="text-xs font-semibold text-slate-800">
@@ -112,7 +108,6 @@ export default function ComparePage() {
         </div>
       )}
 
-      {/* 1 Selected State */}
       {!loading && !error && selectedIds.length === 1 && colleges.length > 0 && (
         <div className="p-5 border border-slate-200 rounded-lg bg-white space-y-3">
           <div className="flex items-center justify-between">
@@ -134,12 +129,10 @@ export default function ComparePage() {
         </div>
       )}
 
-      {/* 2 or 3 Colleges: Full Side-by-Side Comparison Matrix */}
       {!loading && !error && colleges.length >= 2 && (
         <div className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              {/* Institution Header Row */}
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50/80">
                   <th className="p-4 w-48 text-slate-500 font-medium uppercase tracking-wider text-[11px]">
@@ -171,7 +164,6 @@ export default function ComparePage() {
               </thead>
 
               <tbody className="divide-y divide-slate-100">
-                {/* Affiliation */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Affiliation Type
@@ -183,7 +175,6 @@ export default function ComparePage() {
                   ))}
                 </tr>
 
-                {/* Established */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Established Year
@@ -195,7 +186,6 @@ export default function ComparePage() {
                   ))}
                 </tr>
 
-                {/* Rating */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Star Rating
@@ -217,7 +207,6 @@ export default function ComparePage() {
                   })}
                 </tr>
 
-                {/* Annual Tuition */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Annual Tuition
@@ -239,7 +228,6 @@ export default function ComparePage() {
                   })}
                 </tr>
 
-                {/* Average Package */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Avg Package (Placement)
@@ -268,7 +256,6 @@ export default function ComparePage() {
                   })}
                 </tr>
 
-                {/* Highest Package */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Highest Package
@@ -290,7 +277,6 @@ export default function ComparePage() {
                   })}
                 </tr>
 
-                {/* Placement Rate */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Placement Percentage
@@ -304,7 +290,6 @@ export default function ComparePage() {
                   ))}
                 </tr>
 
-                {/* Key Recruiters */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Primary Recruiters
@@ -329,7 +314,6 @@ export default function ComparePage() {
                   ))}
                 </tr>
 
-                {/* Sample Programs */}
                 <tr className="hover:bg-slate-50/60 transition-colors">
                   <td className="p-4 font-semibold text-slate-600 bg-slate-50/30">
                     Programs Sample
@@ -345,7 +329,6 @@ export default function ComparePage() {
                   ))}
                 </tr>
 
-                {/* Action Row */}
                 <tr className="bg-slate-50/40">
                   <td className="p-4 font-semibold text-slate-600">Action</td>
                   {colleges.map((college) => (

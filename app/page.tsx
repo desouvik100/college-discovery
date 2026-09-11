@@ -22,9 +22,7 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-16 pb-16">
-      {/* Editorial Hero Section with Vivid Campus Architecture Backdrop */}
       <section className="relative border-b border-slate-200 overflow-hidden bg-slate-100">
-        {/* Vibrant Collegiate Campus Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85"
@@ -35,7 +33,6 @@ export default async function HomePage() {
             referrerPolicy="no-referrer"
             className="object-cover object-center"
           />
-          {/* Asymmetric Scrim: Solid white over text on the left, fading to transparent so the campus and architecture are vividly visible */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-45% to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
         </div>
@@ -56,7 +53,6 @@ export default async function HomePage() {
               </p>
             </div>
 
-            {/* Direct Search Bar */}
             <form action="/explore" method="GET" className="max-w-xl">
               <div className="flex items-center gap-2 p-1.5 bg-white border border-slate-300 rounded-md shadow-sm focus-within:border-slate-600 focus-within:ring-1 focus-within:ring-slate-600">
                 <div className="pl-2.5 text-slate-400">
@@ -79,7 +75,6 @@ export default async function HomePage() {
               </div>
             </form>
 
-            {/* Primary Action Links */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/explore"
@@ -105,7 +100,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 3-Column Core Capabilities */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border-b border-slate-200 pb-4 mb-8">
           <h2 className="text-xl font-bold text-slate-900 tracking-tight">
@@ -117,7 +111,6 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: Directory */}
           <div className="p-6 bg-white border border-slate-200 rounded-lg shadow-sm space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -139,7 +132,6 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          {/* Card 2: Compare */}
           <div className="p-6 bg-white border border-slate-200 rounded-lg shadow-sm space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -161,7 +153,6 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          {/* Card 3: Predictor */}
           <div className="p-6 bg-white border border-slate-200 rounded-lg shadow-sm space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -185,7 +176,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Institutions Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 pb-4 mb-6 gap-2">
           <div>
@@ -212,7 +202,6 @@ export default async function HomePage() {
               className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:border-slate-300 transition-colors flex flex-col justify-between"
             >
               <div className="space-y-3">
-                {/* College Image / Monogram + Identity */}
                 <div className="flex items-start gap-3">
                   <CollegeImage
                     imageUrl={college.imageUrl}
@@ -241,7 +230,6 @@ export default async function HomePage() {
                   </div>
                 </div>
 
-                {/* Placement & Fee Metrics */}
                 <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
                   <div>
                     <div className="text-[10px] uppercase text-slate-400 font-medium">Avg Package</div>
@@ -277,7 +265,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Directory Access Strip */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-6 sm:p-8 bg-slate-900 text-white rounded-lg shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1.5 max-w-xl">

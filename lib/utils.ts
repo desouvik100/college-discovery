@@ -1,6 +1,9 @@
-/**
- * Utility formatters for presentation
- */
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export function formatCurrency(amount: number, compact: boolean = false): string {
   if (compact) {
@@ -22,13 +25,9 @@ export function formatPercentage(rate: number): string {
   return `${Number(rate).toFixed(1)}%`;
 }
 
-/**
- * Generates an institutional monogram fallback (e.g. "Indian Institute of Technology Bombay" -> "IITB")
- */
 export function getInitials(name: string): string {
   if (!name) return "COL";
 
-  // Common acronym recognitions
   if (name.includes("Indian Institute of Technology")) {
     const parts = name.split("Technology");
     const city = parts[1]?.trim().replace(/[()]/g, "").split(" ")[0] || "";
@@ -49,7 +48,6 @@ export function getInitials(name: string): string {
     return "AIIMS";
   }
 
-  // Generic clean acronym generator
   const words = name
     .replace(/[(),]/g, "")
     .split(/\s+/)

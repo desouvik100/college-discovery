@@ -11,7 +11,6 @@ export default function PredictorPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-      {/* Header */}
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
           College Predictor
@@ -24,13 +23,11 @@ export default function PredictorPage() {
         </p>
       </div>
 
-      {/* Predictor Form */}
       <PredictorForm
         onPredict={setPredictions}
         onLoadingChange={setLoading}
       />
 
-      {/* Loading State */}
       {loading && (
         <div className="text-center py-12 space-y-2">
           <div className="inline-block animate-spin rounded-full h-6 w-6 border-2 border-slate-900 border-t-transparent"></div>
@@ -38,7 +35,6 @@ export default function PredictorPage() {
         </div>
       )}
 
-      {/* Prediction Results */}
       {!loading && predictions && (
         <PredictionResults predictions={predictions} />
       )}

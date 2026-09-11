@@ -4,7 +4,6 @@ const prisma = new PrismaClient();
 
 async function main() {
   try {
-    // Check connection
     await prisma.$connect();
     console.log("✅ Database connection successful!\n");
 

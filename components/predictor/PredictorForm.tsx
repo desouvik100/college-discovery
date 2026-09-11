@@ -107,7 +107,6 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {/* Exam Selection */}
           <div>
             <label className="block text-xs font-medium text-slate-700 mb-1">
               Entrance Exam <span className="text-slate-400">*</span>
@@ -126,7 +125,6 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
             </Select>
           </div>
 
-          {/* Rank Input */}
           <div>
             <label className="block text-xs font-medium text-slate-700 mb-1">
               All-India Rank <span className="text-slate-400">*</span>
@@ -143,7 +141,6 @@ export default function PredictorForm({ onPredict, onLoadingChange }: PredictorF
             />
           </div>
 
-          {/* Category */}
           <div>
             <label className="block text-xs font-medium text-slate-700 mb-1">
               Counseling Category

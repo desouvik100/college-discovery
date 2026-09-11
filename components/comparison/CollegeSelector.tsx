@@ -105,7 +105,6 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
         )}
       </div>
 
-      {/* Selected tags */}
       {selectedIds.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {selectedIds.map((id, index) => {
@@ -130,7 +129,6 @@ export default function CollegeSelector({ selectedIds, colleges = [] }: CollegeS
         </div>
       )}
 
-      {/* Search Input */}
       {selectedIds.length < 3 ? (
         <div className="relative">
           <input

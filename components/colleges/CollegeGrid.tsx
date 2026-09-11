@@ -49,7 +49,6 @@ export default async function CollegeGrid({
 
   return (
     <div className="space-y-4">
-      {/* Results header & sort controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
         <div className="text-xs text-slate-500">
           Showing <span className="font-semibold text-slate-900">{startRecord}–{endRecord}</span> of{" "}
@@ -59,14 +58,12 @@ export default async function CollegeGrid({
         <SortDropdown />
       </div>
 
-      {/* College Results Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {data.colleges.map((college) => (
           <CollegeCard key={college.id} college={college} />
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="pt-4 border-t border-slate-200">
         <Pagination pagination={data.pagination} />
       </div>

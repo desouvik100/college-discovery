@@ -95,7 +95,6 @@ export default function FilterPanel() {
       </div>
 
       <div className="space-y-3.5">
-        {/* State filter */}
         <div>
           <label className="block text-xs font-medium text-slate-700 mb-1">
             State / Territory
@@ -113,7 +112,6 @@ export default function FilterPanel() {
           </Select>
         </div>
 
-        {/* Institution Type */}
         <div>
           <label className="block text-xs font-medium text-slate-700 mb-1">
             Affiliation / Type
@@ -131,7 +129,6 @@ export default function FilterPanel() {
           </Select>
         </div>
 
-        {/* Rating */}
         <div>
           <label className="block text-xs font-medium text-slate-700 mb-1">
             Minimum Rating
@@ -149,7 +146,6 @@ export default function FilterPanel() {
           </Select>
         </div>
 
-        {/* Fee range */}
         <div>
           <label className="block text-xs font-medium text-slate-700 mb-1">
             Max Annual Tuition (₹)

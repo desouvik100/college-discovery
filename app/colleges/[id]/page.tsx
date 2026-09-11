@@ -24,7 +24,6 @@ export default async function CollegeDetailPage({
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-      {/* Breadcrumb Navigation */}
       <nav className="flex items-center space-x-2 text-xs text-slate-500">
         <Link href="/explore" className="hover:text-slate-900 transition-colors">
           Explore
@@ -35,7 +34,6 @@ export default async function CollegeDetailPage({
         <span className="text-slate-800 font-medium truncate max-w-xs">{college.name}</span>
       </nav>
 
-      {/* College Masthead Header */}
       <div className="pb-8 border-b border-slate-200 space-y-6">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div className="space-y-2 flex-1">
@@ -80,7 +78,6 @@ export default async function CollegeDetailPage({
           </div>
         </div>
 
-        {/* Campus Photography Banner (when available) */}
         {college.imageUrl && (
           <div className="border border-slate-200 rounded-lg overflow-hidden bg-slate-50 shadow-sm mt-4">
             <div className="relative aspect-[21/9] sm:aspect-[2.8/1] w-full bg-slate-100">
@@ -113,7 +110,6 @@ export default async function CollegeDetailPage({
           </div>
         )}
 
-        {/* Key Metrics Grid - Restrained strip with dividers, not cards */}
         <div className="mt-8 pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs">
           <div>
             <span className="text-slate-400 font-medium block mb-0.5">Annual Tuition</span>
@@ -145,7 +141,6 @@ export default async function CollegeDetailPage({
         </div>
       </div>
 
-      {/* SECTION 1: Overview */}
       <section className="space-y-3">
         <h2 className="text-lg font-bold text-slate-900 tracking-tight">
           Institutional Overview
@@ -164,7 +159,6 @@ export default async function CollegeDetailPage({
 
       <hr className="border-slate-200" />
 
-      {/* SECTION 2: Academic Programs */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-slate-900 tracking-tight">
@@ -205,7 +199,6 @@ export default async function CollegeDetailPage({
 
       <hr className="border-slate-200" />
 
-      {/* SECTION 3: Placement Performance */}
       <section className="space-y-4">
         <h2 className="text-lg font-bold text-slate-900 tracking-tight">
           Placement Performance & Trends
@@ -248,7 +241,6 @@ export default async function CollegeDetailPage({
               </div>
             </div>
 
-            {/* Top Recruiters */}
             {latestPlacement?.topRecruiters?.length > 0 && (
               <div className="pt-2">
                 <p className="text-xs font-medium text-slate-500 mb-2">Prominent Recruiting Partners</p>
@@ -270,7 +262,6 @@ export default async function CollegeDetailPage({
         )}
       </section>
 
-      {/* SECTION 4: Admission Cutoffs */}
       {college.admissionCutoffs && college.admissionCutoffs.length > 0 && (
         <>
           <hr className="border-slate-200" />
@@ -323,7 +314,6 @@ export default async function CollegeDetailPage({
 
       <hr className="border-slate-200" />
 
-      {/* SECTION 5: Student Reviews */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-slate-900 tracking-tight">

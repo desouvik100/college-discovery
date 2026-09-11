@@ -17,7 +17,6 @@ export default function ExplorePage({
 }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-      {/* Page Title & Search Bar in flow */}
       <div className="space-y-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
@@ -31,14 +30,11 @@ export default function ExplorePage({
         <SearchBar />
       </div>
 
-      {/* Main Discovery Interface */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-        {/* Filter Sidebar */}
         <aside className="lg:col-span-1">
           <FilterPanel />
         </aside>
 
-        {/* Results Stream */}
         <main className="lg:col-span-3">
           <Suspense fallback={<LoadingSkeleton />}>
             <CollegeGrid searchParams={searchParams} />

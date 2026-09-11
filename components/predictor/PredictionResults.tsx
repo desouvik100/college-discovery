@@ -28,7 +28,6 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
 
   return (
     <div className="space-y-6">
-      {/* Summary Matrix Banner */}
       <div className="bg-white border border-slate-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold text-slate-900">
@@ -48,7 +47,6 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
         </div>
       </div>
 
-      {/* Strong Matches */}
       {strongMatches.length > 0 && (
         <section className="space-y-3">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
@@ -68,7 +66,6 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
         </section>
       )}
 
-      {/* Possible Matches */}
       {possibleMatches.length > 0 && (
         <section className="space-y-3">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
@@ -88,7 +85,6 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
         </section>
       )}
 
-      {/* Reach Options */}
       {reachMatches.length > 0 && (
         <section className="space-y-3">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
@@ -108,7 +104,6 @@ export default function PredictionResults({ predictions }: PredictionResultsProp
         </section>
       )}
 
-      {/* Disclaimer */}
       <div className="p-4 border border-slate-200 bg-slate-50 rounded-lg text-[11px] text-slate-500 space-y-1">
         <p className="font-semibold text-slate-700">Evaluation Methodology & Counseling Disclaimer</p>
         <p>
@@ -162,7 +157,6 @@ function PredictionResultItem({ result }: { result: PredictionResult }) {
         </div>
       </div>
 
-      {/* Metrics Row */}
       <div className="pt-2 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
         <div>
           <span className="text-slate-400 block text-[11px]">Opening Rank</span>
@@ -184,7 +178,6 @@ function PredictionResultItem({ result }: { result: PredictionResult }) {
         </div>
       </div>
 
-      {/* Deterministic Explanation */}
       <div className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded border border-slate-100 leading-relaxed font-sans">
         <span className="font-semibold text-slate-700">Rationale: </span>
         {result.reason}
