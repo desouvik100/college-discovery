@@ -54,6 +54,11 @@
     @apply text-sm text-stone-600;
     line-height: 1.5;
   }
+
+  .small-text {
+    @apply text-sm text-stone-600;
+    line-height: 1.5;
+  }
   
   .caption {
     @apply text-xs text-stone-500 uppercase tracking-wide;
@@ -129,6 +134,14 @@
   .surface {
     @apply bg-white border border-stone-200;
     border-radius: 8px;
+  }
+
+  .surface-primary {
+    @apply bg-white;
+  }
+
+  .surface-secondary {
+    @apply bg-stone-100;
   }
   
   .surface-elevated {

@@ -142,7 +142,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "Indian Institute of Technology Jodhpur", state: "Rajasthan", city: "Jodhpur", establishedYear: 2008, collegeType: CollegeType.GOVERNMENT, rating: 4.3, totalFees: 810000, tier: 2 },
   { name: "Indian Institute of Technology Tirupati", state: "Andhra Pradesh", city: "Tirupati", establishedYear: 2015, collegeType: CollegeType.GOVERNMENT, rating: 4.2, totalFees: 800000, tier: 2 },
 
-  // --- PREMIER NITs (JEE_MAIN) ---
   {
     name: "National Institute of Technology Tiruchirappalli",
     state: "Tamil Nadu",
@@ -214,7 +213,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "National Institute of Technology Goa", state: "Goa", city: "Ponda", establishedYear: 2010, collegeType: CollegeType.GOVERNMENT, rating: 4.0, totalFees: 590000, tier: 2 },
   { name: "National Institute of Technology Jamshedpur", state: "Jharkhand", city: "Jamshedpur", establishedYear: 1960, collegeType: CollegeType.GOVERNMENT, rating: 4.2, totalFees: 600000, tier: 2 },
 
-  // --- PREMIER IIITs (JEE_MAIN) ---
   {
     name: "International Institute of Information Technology Hyderabad",
     state: "Telangana",
@@ -251,7 +249,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "Indian Institute of Information Technology Sri City", state: "Andhra Pradesh", city: "Chittoor", establishedYear: 2013, collegeType: CollegeType.GOVERNMENT, rating: 4.2, totalFees: 950000, tier: 2 },
   { name: "Indian Institute of Information Technology Guwahati", state: "Assam", city: "Guwahati", establishedYear: 2013, collegeType: CollegeType.GOVERNMENT, rating: 4.1, totalFees: 820000, tier: 2 },
 
-  // --- PREMIER STATE & CENTRAL GOVERNMENT UNIVERSITIES (JEE_MAIN / STATE) ---
   {
     name: "Delhi Technological University",
     state: "Delhi",
@@ -344,7 +341,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
     websiteUrl: "https://www.iiests.ac.in",
   },
 
-  // --- BITS PILANI CAMPUSES (BITSAT) ---
   {
     name: "BITS Pilani - Pilani Campus",
     state: "Rajasthan",
@@ -362,7 +358,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "BITS Pilani - K K Birla Goa Campus", state: "Goa", city: "Zuarinagar", establishedYear: 2004, collegeType: CollegeType.DEEMED, rating: 4.6, totalFees: 2150000, tier: 1 },
   { name: "BITS Pilani - Hyderabad Campus", state: "Telangana", city: "Hyderabad", establishedYear: 2008, collegeType: CollegeType.DEEMED, rating: 4.6, totalFees: 2150000, tier: 1 },
 
-  // --- TOP PRIVATE & DEEMED INSTITUTIONS (JEE_MAIN / PRIVATE) ---
   {
     name: "Vellore Institute of Technology",
     state: "Tamil Nadu",
@@ -479,7 +474,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "Government College of Engineering Amravati", state: "Maharashtra", city: "Amravati", establishedYear: 1964, collegeType: CollegeType.GOVERNMENT, rating: 4.0, totalFees: 120000, tier: 3 },
   { name: "Government College of Engineering Aurangabad", state: "Maharashtra", city: "Chhatrapati Sambhajinagar", establishedYear: 1960, collegeType: CollegeType.GOVERNMENT, rating: 4.0, totalFees: 115000, tier: 3 },
 
-  // --- PREMIER MEDICAL INSTITUTIONS (NEET) ---
   {
     name: "All India Institute of Medical Sciences New Delhi",
     state: "Delhi",
@@ -539,7 +533,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
   { name: "SCB Medical College", state: "Odisha", city: "Cuttack", establishedYear: 1944, collegeType: CollegeType.GOVERNMENT, rating: 4.4, totalFees: 80000, isMedical: true, tier: 2 },
   { name: "Sawai Man Singh Medical College", state: "Rajasthan", city: "Jaipur", establishedYear: 1947, collegeType: CollegeType.GOVERNMENT, rating: 4.5, totalFees: 110000, isMedical: true, tier: 1 },
 
-  // --- ADDITIONAL PROMINENT ENGINEERING & STATE UNIVERSITIES ---
   { name: "MKSSS Cummins College of Engineering for Women", state: "Maharashtra", city: "Pune", establishedYear: 1991, collegeType: CollegeType.PRIVATE, rating: 4.2, totalFees: 680000, tier: 2 },
   { name: "Vishwakarma Institute of Information Technology", state: "Maharashtra", city: "Pune", establishedYear: 2002, collegeType: CollegeType.PRIVATE, rating: 4.0, totalFees: 640000, tier: 2 },
   { name: "Government College of Engineering Karad", state: "Maharashtra", city: "Karad", establishedYear: 1960, collegeType: CollegeType.GOVERNMENT, rating: 4.0, totalFees: 130000, tier: 3 },
@@ -589,7 +582,6 @@ const COLLEGES_DATA: CollegeSeed[] = [
 async function main() {
   console.log(`Starting database seed with ${COLLEGES_DATA.length} colleges...`);
 
-  // Clear existing data cleanly in foreign key dependency order
   console.log("Resetting existing records...");
   await prisma.admissionCutoff.deleteMany();
   await prisma.review.deleteMany();
@@ -598,7 +590,6 @@ async function main() {
   await prisma.college.deleteMany();
   await prisma.exam.deleteMany();
 
-  // Create Exams
   console.log("Registering national entrance exams...");
   const jeeMain = await prisma.exam.create({
     data: {
@@ -661,7 +652,6 @@ async function main() {
     const isBITS = cData.name.startsWith("BITS Pilani");
     const isMedical = !!cData.isMedical;
 
-    // Courses for this college
     const coursesToCreate = [];
     if (isMedical) {
       coursesToCreate.push(
@@ -684,7 +674,6 @@ async function main() {
       }
     }
 
-    // 3 Years Placement Stats
     const placementStatsToCreate = [];
     for (let yrIndex = 0; yrIndex < 3; yrIndex++) {
       const year = currentYear - yrIndex;
@@ -730,7 +719,6 @@ async function main() {
       });
     }
 
-    // Varied Realistic Reviews
     const reviewArchetypes = [
       {
         rating: Math.min(5, Math.max(3, Math.round(cData.rating))),
@@ -758,7 +746,6 @@ async function main() {
       },
     ];
 
-    // Atomically create college with its courses, placement stats, and reviews
     const college = await prisma.college.create({
       data: {
         name: cData.name,
@@ -791,7 +778,6 @@ async function main() {
     totalCollegesCreated++;
     totalCoursesCreated += college.courses.length;
 
-    // Determine exam and historical cutoff ranks
     let targetExam = jeeMain;
     if (isMedical) {
       targetExam = neet;
@@ -801,7 +787,6 @@ async function main() {
       targetExam = bitsat;
     }
 
-    // Base rank windows according to college tier & exam
     let baseOpen = 10000;
     let baseClose = 30000;
 
@@ -828,7 +813,6 @@ async function main() {
       baseOpen = 350;
       baseClose = 3800;
     } else {
-      // JEE Main (NITs, IIITs, premier state, private)
       if (cData.tier === 1) {
         baseOpen = 800;
         baseClose = 9500;
@@ -841,7 +825,6 @@ async function main() {
       }
     }
 
-    // Seed cutoffs for primary course (CSE or MBBS) and secondary course
     const cutoffsToCreate = [];
     const primaryCourse = college.courses[0];
     const secondaryCourse = college.courses[1] || college.courses[0];
