@@ -38,18 +38,16 @@ export default async function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-20 sm:pb-28">
-          <div className="max-w-3xl space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-2 small-text font-medium text-stone-700 surface-primary border border-stone-200 rounded-lg backdrop-blur-sm shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-stone-600"></span>
-              Academic Admissions & Placement Intelligence
-            </div>
-
-            <div className="space-y-4">
-              <h1 className="display-title leading-tight">
-                Find the right college with better information.
+          <div className="max-w-3xl space-y-7">
+            <div className="space-y-3.5">
+              <div className="text-xs font-semibold uppercase tracking-widest text-stone-500">
+                JoSAA • NEET • BITSAT • NIRF Institutional Data
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-900 leading-[1.18]">
+                College admissions, cutoffs, and placement data.
               </h1>
-              <p className="body-text text-stone-600 max-w-2xl">
-                Accurate admission cutoffs, verified placement packages, fee schedules, and objective side-by-side comparison across accredited institutions in India.
+              <p className="text-base sm:text-lg text-stone-600 max-w-2xl leading-relaxed">
+                Direct access to verified closing ranks, official tuition fee schedules, and audited placement packages across accredited Indian universities.
               </p>
             </div>
 
@@ -63,24 +61,41 @@ export default async function HomePage() {
                 <input
                   type="text"
                   name="search"
-                  placeholder="Search by college name, city, or state (e.g. IIT Bombay, Delhi, Vellore)..."
-                  className="w-full body-text text-stone-900 placeholder:text-stone-500 focus:outline-none bg-transparent"
+                  placeholder="Search by college name, city, or state (e.g. IIT Bombay, Delhi, BITS)..."
+                  className="w-full body-text text-stone-900 placeholder:text-stone-400 focus:outline-none bg-transparent"
                 />
                 <button
                   type="submit"
-                  className="btn btn-primary whitespace-nowrap"
+                  className="btn btn-primary whitespace-nowrap px-4 py-2"
                 >
                   Search
                 </button>
               </div>
+              <div className="flex items-center gap-2 mt-2.5 text-xs text-stone-500">
+                <span className="font-medium text-stone-600 shrink-0">Popular:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  <Link href="/explore?search=IIT+Bombay" className="px-2 py-0.5 rounded bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors">
+                    IIT Bombay
+                  </Link>
+                  <Link href="/explore?search=BITS+Pilani" className="px-2 py-0.5 rounded bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors">
+                    BITS Pilani
+                  </Link>
+                  <Link href="/explore?search=NIT+Trichy" className="px-2 py-0.5 rounded bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors">
+                    NIT Trichy
+                  </Link>
+                  <Link href="/explore?search=AIIMS" className="px-2 py-0.5 rounded bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors">
+                    AIIMS Delhi
+                  </Link>
+                </div>
+              </div>
             </form>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/explore"
                 className="btn btn-primary inline-flex items-center gap-2"
               >
-                <span>Explore Directory</span>
+                <span>Browse All Colleges</span>
                 <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
                   <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
                 </svg>
@@ -89,13 +104,13 @@ export default async function HomePage() {
                 href="/predictor"
                 className="btn btn-secondary inline-flex items-center gap-2"
               >
-                <span>Evaluate Rank Match</span>
+                <span>Cutoff Predictor</span>
               </Link>
               <Link
                 href="/compare"
                 className="btn btn-ghost inline-flex items-center gap-2"
               >
-                <span>Compare Colleges</span>
+                <span>Compare Matrix</span>
               </Link>
             </div>
           </div>
@@ -103,80 +118,80 @@ export default async function HomePage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="border-b border-stone-200 pb-6 mb-8">
-          <h2 className="page-title mb-2">
+        <header className="border-b border-stone-200 pb-5 mb-8">
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-stone-900 mb-1">
             How College Discovery Works
           </h2>
-          <p className="body-text text-stone-600">
+          <p className="text-sm text-stone-600">
             Three focused tools engineered to cut through marketing noise and clarify university choices.
           </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="surface-primary p-8 border border-stone-200 rounded-lg space-y-4">
-            <div className="space-y-3">
-              <div className="small-text font-medium text-stone-500 uppercase tracking-wider">
+          <div className="surface-primary p-7 border border-stone-200 rounded-lg space-y-4">
+            <div className="space-y-2.5">
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
                 01 • Discovery
               </div>
-              <h3 className="section-title">
+              <h3 className="text-lg font-semibold text-stone-900 tracking-tight">
                 Institutional Directory & Filtering
               </h3>
-              <p className="body-text text-stone-600 leading-relaxed">
+              <p className="text-sm text-stone-600 leading-relaxed">
                 Filter accredited engineering and medical colleges by state, government vs private ownership, total program fees, and verified rating benchmarks.
               </p>
             </div>
             <Link
               href="/explore"
-              className="inline-flex items-center gap-2 body-text font-medium text-stone-700 hover:text-stone-900 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-700 hover:text-stone-900 transition-colors"
             >
               <span>Search directory</span>
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
                 <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
               </svg>
             </Link>
           </div>
 
-          <div className="surface-primary p-8 border border-stone-200 rounded-lg space-y-4">
-            <div className="space-y-3">
-              <div className="small-text font-medium text-stone-500 uppercase tracking-wider">
+          <div className="surface-primary p-7 border border-stone-200 rounded-lg space-y-4">
+            <div className="space-y-2.5">
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
                 02 • Contrast
               </div>
-              <h3 className="section-title">
+              <h3 className="text-lg font-semibold text-stone-900 tracking-tight">
                 Side-by-Side Matrix Comparison
               </h3>
-              <p className="body-text text-stone-600 leading-relaxed">
+              <p className="text-sm text-stone-600 leading-relaxed">
                 Directly compare up to 3 shortlisted institutions across tuition costs, average compensation packages, placement ratios, and accredited branch offerings.
               </p>
             </div>
             <Link
               href="/compare"
-              className="inline-flex items-center gap-2 body-text font-medium text-stone-700 hover:text-stone-900 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-700 hover:text-stone-900 transition-colors"
             >
               <span>Compare colleges</span>
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
                 <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
               </svg>
             </Link>
           </div>
 
-          <div className="surface-primary p-8 border border-stone-200 rounded-lg space-y-4">
-            <div className="space-y-3">
-              <div className="small-text font-medium text-stone-500 uppercase tracking-wider">
+          <div className="surface-primary p-7 border border-stone-200 rounded-lg space-y-4">
+            <div className="space-y-2.5">
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
                 03 • Prediction
               </div>
-              <h3 className="section-title">
+              <h3 className="text-lg font-semibold text-stone-900 tracking-tight">
                 Rank Cutoff Predictor
               </h3>
-              <p className="body-text text-stone-600 leading-relaxed">
+              <p className="text-sm text-stone-600 leading-relaxed">
                 Input your entrance examination score across JEE Main, JEE Advanced, NEET, or BITSAT to calculate admission likelihood across categories.
               </p>
             </div>
             <Link
               href="/predictor"
-              className="inline-flex items-center gap-2 body-text font-medium text-stone-700 hover:text-stone-900 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-700 hover:text-stone-900 transition-colors"
             >
               <span>Calculate eligibility</span>
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
                 <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
               </svg>
             </Link>
@@ -185,18 +200,18 @@ export default async function HomePage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-stone-200 pb-6 mb-8 gap-4">
+        <header className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-stone-200 pb-5 mb-8 gap-4">
           <div>
-            <h2 className="page-title mb-2">
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-stone-900">
               Featured Institutions
             </h2>
-            <p className="body-text text-stone-600">
+            <p className="text-sm text-stone-600 mt-1">
               Accredited universities with comprehensive academic, fee, and placement records.
             </p>
           </div>
           <Link
             href="/explore"
-            className="body-text font-medium text-stone-700 hover:text-stone-900 transition-colors inline-flex items-center gap-2 whitespace-nowrap"
+            className="text-sm font-medium text-stone-700 hover:text-stone-900 transition-colors inline-flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>View all colleges</span>
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
@@ -209,65 +224,65 @@ export default async function HomePage() {
           {featuredColleges.map((college) => (
             <div
               key={college.id}
-              className="surface-primary border border-stone-200 rounded-lg p-6 hover:border-stone-300 transition-colors"
+              className="surface-primary border border-stone-200 rounded-lg p-5 hover:border-stone-300 transition-all duration-200 flex flex-col justify-between group"
             >
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3.5">
                   <CollegeImage
                     imageUrl={college.imageUrl}
                     imageAlt={college.imageAlt || college.name}
                     name={college.name}
-                    className="w-16 h-16 rounded-lg border border-stone-200 object-cover shrink-0"
+                    className="w-12 h-12 rounded-lg border border-stone-200 object-cover shrink-0 mt-0.5"
                   />
-                  <div className="min-w-0 flex-1 space-y-2">
+                  <div className="min-w-0 flex-1 space-y-1">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="small-text font-medium text-stone-500 uppercase tracking-wide">
+                      <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
                         {TYPE_LABELS[college.collegeType] || college.collegeType}
                       </span>
-                      <span className="small-text font-medium text-stone-900 surface-secondary px-2 py-1 rounded">
-                        ★ {college.rating.toFixed(1)}
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-stone-800 bg-stone-100 border border-stone-200/80 px-1.5 py-0.5 rounded">
+                        <span className="text-amber-500">★</span> {college.rating.toFixed(1)}
                       </span>
                     </div>
                     <Link
                       href={`/colleges/${college.id}`}
-                      className="section-title hover:text-stone-700 transition-colors block"
+                      className="text-base font-semibold text-stone-900 group-hover:text-stone-700 transition-colors leading-snug line-clamp-2 block"
                     >
                       {college.name}
                     </Link>
-                    <p className="small-text text-stone-600">
+                    <p className="text-xs text-stone-500 truncate">
                       {college.city}, {college.state} • Est. {college.establishedYear || "—"}
                     </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200">
+                <div className="grid grid-cols-2 gap-3 pt-3 border-t border-stone-100">
                   <div>
-                    <div className="small-text text-stone-500 mb-1">Avg Package</div>
-                    <div className="body-text font-semibold text-stone-900">
+                    <div className="text-[11px] font-medium text-stone-500 uppercase tracking-wider mb-0.5">Avg Package</div>
+                    <div className="text-sm font-semibold text-stone-900 font-mono">
                       {college.latestPlacement
                         ? formatCurrency(college.latestPlacement.averagePackage)
                         : "—"}
                     </div>
                   </div>
                   <div>
-                    <div className="small-text text-stone-500 mb-1">Total Tuition</div>
-                    <div className="body-text font-semibold text-stone-900">
+                    <div className="text-[11px] font-medium text-stone-500 uppercase tracking-wider mb-0.5">Total Tuition</div>
+                    <div className="text-sm font-semibold text-stone-900 font-mono">
                       {college.totalFees ? formatCurrency(college.totalFees) : "—"}
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-stone-200 flex items-center justify-between">
-                  <span className="small-text text-stone-600">
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+                  <span className="text-xs text-stone-500 font-medium">
                     {college.latestPlacement ? `${college.latestPlacement.placementRate.toFixed(0)}% placed` : "Admissions open"}
                   </span>
                   <Link
                     href={`/colleges/${college.id}`}
-                    className="body-text font-medium text-stone-700 hover:text-stone-900 transition-colors inline-flex items-center gap-1"
+                    className="text-xs font-semibold text-stone-700 hover:text-stone-900 transition-colors inline-flex items-center gap-1 group-hover:translate-x-0.5 duration-150"
                   >
                     <span>Profile</span>
-                    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-                      <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
+                      <path fillRule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" />
                     </svg>
                   </Link>
                 </div>
