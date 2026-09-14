@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: "Search institutions across India. Compare fees, placements, and ratings. Evaluate admission cutoffs based on historical entrance exam ranks.",
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
