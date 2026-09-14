@@ -1,0 +1,38 @@
+# Documentation
+*.md
+!README.md
+
+# Development files
+.env.example
+.env.local
+.env.development
+
+# Scripts
+scripts/
+deploy.sh
+deploy.bat
+
+# Tests
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
