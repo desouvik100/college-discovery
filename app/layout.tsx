@@ -14,7 +14,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "College Discovery | Engineering & Medical Institution Explorer",
   description: "Search institutions across India. Compare fees, placements, and ratings. Evaluate admission cutoffs based on historical entrance exam ranks.",
-  referrer: "no-referrer",
 };
 
 export default function RootLayout({
