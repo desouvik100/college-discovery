@@ -1,3 +1,4 @@
+// Railway deployment trigger
 const nextConfig = {
   reactStrictMode: true,
   images: {
